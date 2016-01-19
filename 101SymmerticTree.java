@@ -1,3 +1,6 @@
+//时间复杂度O(n) 空间复杂度O(n) 利用stack对所有node进行遍历，对比每个node的left&right&self value
+//可以尝试使用recursive替换
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

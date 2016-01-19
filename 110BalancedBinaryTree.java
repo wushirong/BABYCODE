@@ -1,3 +1,4 @@
+//从下往上recursive，一旦发现不是balance就返回-1，最后判断返回值是否小于0
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

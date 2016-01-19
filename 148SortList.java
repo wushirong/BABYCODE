@@ -33,7 +33,7 @@ public class Solution {
                 head.next = q;
                 q = q.next;
             }
-            head = head.next;
+            head = head.next;   // this sentence is missing in the second write, which causes error
         }
         if(p != null) head.next = p;
         if(q != null) head.next = q;

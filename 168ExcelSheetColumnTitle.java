@@ -1,3 +1,4 @@
+//相当于26进制 pay attention to the reverse
 public class Solution {
     public String convertToTitle(int n) {
         char[] column = {'Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y'};

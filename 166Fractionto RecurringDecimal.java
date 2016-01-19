@@ -1,3 +1,39 @@
+//clean version. Using hashmap to store teh numerator of every step and check whehter
+//an endless loop is formed. Corner case is speically handled in the end.
+public String fractionToDecimal(int numerator, int denominator) {
+        if(numerator == 0) return "0";
+        boolean nonneg = (numerator < 0) == (denominator < 0);
+        long numL = Math.abs(numerator);
+        long denL = Math.abs(denominator);
+        
+        HashMap<Long, Integer> map = new HashMap<Long, Integer>();
+        StringBuilder sb = new StringBuilder();
+        long res = numL / denL;
+        numL %= denL;
+        sb.append(res);
+        if(numL != 0) sb.append(".");
+        int index = sb.indexOf(".") + 1;
+        while(numL != 0) {
+            numL *= 10;
+            if(map.containsKey(numL)) {
+                sb.insert(map.get(numL), "(");
+                sb.append(")");
+                break;
+            }
+            else {
+                map.put(numL, index++);
+            }
+            sb.append(Math.abs(numL / denL));
+            numL %= denL;
+        }
+        if(denominator < -Integer.MAX_VALUE) sb.toString();
+        if(numerator < -Integer.MAX_VALUE) {
+            if(denominator < 0) return sb.delete(0, 1).toString();
+            else return sb.toString();
+        }
+        else return nonneg? sb.toString(): sb.insert(0, "-").toString();
+    }
+
 public class Solution {
     public String fractionToDecimal(int numerator, int denominator) {
         StringBuilder sb = new StringBuilder();

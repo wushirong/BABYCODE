@@ -1,3 +1,5 @@
+//用两个 queue 分别记录node 和 level，然后对应存储到hashmap中，当处理queue中的node时，分别pop出node和其对应level，去map中
+//时候已经有对应level的list，若有则将新value加在后面， 没有则建立新的（key, value）
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

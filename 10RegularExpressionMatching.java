@@ -1,3 +1,7 @@
+//合理的分类思考很重要，首先分出p 长度为1以及第二位不为*的情况，然后对第二位为*的情况进行处理，
+//*也可以代表前一字符串长度为0  
+//while loop中后一条件的括号一定要加，否则与或判断会错导致index out of bound exception  
+
     public boolean isMatch(String s, String p) {
         if(p.length() == 0) return s.length() == 0;
         

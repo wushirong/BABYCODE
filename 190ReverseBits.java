@@ -1,3 +1,13 @@
+//>>> means moving bite to right with adding 0 instead of what should be 
+public int reverseBits(int n) {
+        int res = 0;
+        for(int i = 0; i < 32; i++) {
+            res += n & 1;
+            n >>>= 1;
+            if(i < 31) res <<= 1;
+        }
+        return res;
+    }
 //正数负数直接转换和二进制计算间有显著差异
 
 public class Solution {

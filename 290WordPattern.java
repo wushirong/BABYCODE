@@ -7,6 +7,7 @@ public class Solution {
         if(key.length != value.length) return false;
         for(int i = 0; i < key.length; i++) {
             if(map.containsKey(key[i])) {
+                //using equals is important
                 if(!map.get(key[i]).equals(value[i]) ) return false;
             }
             else {

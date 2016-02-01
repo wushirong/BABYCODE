@@ -1,10 +1,4 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
+/** reverse the second half of the stream and then compare with the first half
  */
 public class Solution {
     public boolean isPalindrome(ListNode head) {

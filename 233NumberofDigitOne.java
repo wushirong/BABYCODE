@@ -1,3 +1,5 @@
+//this is a math problem. Figure out the mathemetical realtion and then answer is as follow
+// another thing is that i and front should be set to long to avoid int digit exceed
 public class Solution {
     public int countDigitOne(int n) {
         int res = 0;

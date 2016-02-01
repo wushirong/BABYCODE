@@ -1,3 +1,28 @@
+//another method using priority queue, o(n) time and space
+public ListNode mergeKLists(ListNode[] lists) {
+        if(lists == null || lists.length == 0) return null;
+        PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode ln1, ListNode ln2) {
+                if(ln1.val > ln2.val) return 1;
+                else if(ln1.val == ln2.val) return 0;
+                else return -1;
+            }
+        });
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+        for(ListNode each: lists) {
+            if(each != null) queue.offer(each);
+        }
+        while(! queue.isEmpty()) {
+            tail.next = queue.poll();
+            tail = tail.next;
+            
+            if(tail.next != null) queue.offer(tail.next);
+        }
+        return dummy.next;
+    }
+
 public class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists == null || lists.length == 0) return null;

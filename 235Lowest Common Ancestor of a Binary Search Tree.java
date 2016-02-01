@@ -1,3 +1,4 @@
+//binary search tree is orginizd , but binary tree is not orginized.
 public class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(p == null || q == null || root == null) return null;

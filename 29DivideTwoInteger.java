@@ -1,3 +1,25 @@
+//converge to long can avoid Integer.MIN_VALUE problem
+public int divide(int dividend, int divisor) {
+        if(dividend == 0 || divisor == 0) return 0;
+        long ldividend = (long)dividend;
+        long ldivisor = (long)divisor;
+        long res = helper(ldividend, ldivisor);
+        return res > Integer.MAX_VALUE? Integer.MAX_VALUE: (int) res;
+    }
+    private long helper(long dividend, long divisor) {
+        long res = 1;
+        boolean neg = dividend < 0 != divisor < 0;
+        if(dividend < 0) dividend = -dividend;
+        if(divisor < 0) divisor = -divisor;
+        long sum = divisor;
+        if(dividend < divisor) return 0;
+        while(sum + sum <= dividend) {
+            sum += sum;
+            res += res;
+        }
+        return neg? -(res + helper(dividend - sum, divisor)): (res + helper(dividend - sum, divisor));
+    }
+
 public class Solution {
     public int divide(int dividend, int divisor) {
         if(dividend == 0 || divisor == 0) return 0;

@@ -1,3 +1,21 @@
+// recursive solution, for each "(", give a ")" to ensure each pair of paranthesis is closed.
+public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<String>();
+        if(n < 0) return res;
+        helper(res, n, 0, 0, "");
+        return res;
+    }
+    private void helper(List<String> res, int max, int left, int right, String path) {
+        if(path.length() == 2 * max) {
+            res.add(path);
+            return;
+        }
+        if(left < max) helper(res, max, left + 1, right, path + "(");
+        if(right < left) helper(res, max, left, right + 1, path + ")");
+    }
+
+
+
 public class Solution {
     public List<String> generateParenthesis(int n) {
         if(n < 0) return null;

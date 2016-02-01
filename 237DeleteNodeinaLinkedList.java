@@ -1,3 +1,4 @@
+//simply using O(n) time to move the val of rest of the list to one step earlier
 /**
  * Definition for singly-linked list.
  * public class ListNode {

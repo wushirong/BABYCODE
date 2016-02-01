@@ -1,3 +1,15 @@
+//clean version, O(n) time and space, DFS
+public List<String> binaryTreePaths(TreeNode root) {
+        List<String> res = new ArrayList<String>();
+        if(root == null) return res;
+        helper(root, res, "");
+        return res;
+    }
+    private void helper(TreeNode root, List<String> list, String path) {
+        if(root.left == null && root.right == null) list.add(path + root.val);
+        if(root.left != null) helper(root.left, list, path + root.val + "->");
+        if(root.right != null) helper(root.right, list, path + root.val + "->");
+    }
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

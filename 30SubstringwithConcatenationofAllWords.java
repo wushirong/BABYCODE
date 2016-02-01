@@ -1,3 +1,4 @@
+//second rewrite -- failed
 public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> res = new ArrayList<Integer>();
         if(s == null || s.length() == 0) return res;

@@ -1,3 +1,5 @@
+//O(n) time, constant space, go through the array and procolate 2 possible candidate, 
+//then check whether the two candidate is qualified.
 public class Solution {
     public List<Integer> majorityElement(int[] nums) {
         
@@ -28,6 +30,7 @@ public class Solution {
                 count[1]--;
             }
         }
+        //check whether numbers in num[] is qualified
         int time1 = 0;
         int time2 = 0;
         for(int i = 0; i < l; i++) {

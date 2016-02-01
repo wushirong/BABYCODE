@@ -1,3 +1,4 @@
+//for string comparasion, using .equals() is very very very important!!!!
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

@@ -16,6 +16,7 @@ public class Solution {
                 }
                 live -= board[i][j];
                 if(live == 3 && board[i][j] == 0 ) board[i][j] = 3;
+                //bracket for(live < 2 || live > 3) is important but easy to omit
                 if((live < 2 || live > 3) && board[i][j] == 1) board[i][j] = 2;
             }
         }

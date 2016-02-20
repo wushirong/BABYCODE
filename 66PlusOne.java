@@ -1,3 +1,26 @@
+public int[] plusOne(int[] digits) {
+        if(digits == null || digits.length == 0) return digits;
+        int carry = 0;
+        int i = digits.length - 1;
+        while(i >= 0) {
+            if(digits[i] != 9) break;
+            i--;
+        }
+        if(i < 0) {
+            int[] res = new int[digits.length + 1];
+            res[0] = 1;
+            return res;
+        }
+        else {
+            digits[i] += 1;
+            for(int j = i + 1; j < digits.length; j++) {
+                digits[j] = 0;
+            }
+        }
+        return digits;
+    }
+
+
 public class Solution {
     public int[] plusOne(int[] digits) {
         if(digits == null || digits.length == 0) return digits;

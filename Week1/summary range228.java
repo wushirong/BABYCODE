@@ -1,3 +1,29 @@
+public List<String> summaryRanges(int[] nums) {
+        List<String> res = new LinkedList<String>();
+        if(nums == null || nums.length == 0 ) return res;
+        if(nums.length < 2) {
+            res.add(Integer.toString(nums[0]));
+            return res;
+        }
+        Arrays.sort(nums);
+        int start = nums[0];
+        int end = nums[0];
+        for(int i = 1; i < nums.length; i++) {
+            if(nums[i] - nums[i-1] != 1)  {
+                end = nums[i-1];
+                if(start == end) res.add(Integer.toString(start));
+                else res.add(start + "->" + end);
+                start = nums[i];
+                end = start;
+            }
+            else end = nums[i];
+        }
+        if(start == end) res.add(Integer.toString(start));
+        else res.add(start + "->" + end);
+        return res;
+    }
+
+
 public class Solution {
     public List<String> summaryRanges(int[] nums) {
         if(nums==null){

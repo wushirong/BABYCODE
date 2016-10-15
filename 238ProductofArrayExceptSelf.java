@@ -1,3 +1,22 @@
+public int[] productExceptSelf(int[] nums) {
+        if (nums == null || nums.length == 0) return nums;
+        int sum = 1;
+        int hasZero = 0;
+        for (int num: nums) {
+            if (num != 0) sum *= num;
+            else hasZero++;
+        }
+        if (hasZero > 1) sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) nums[i] = sum;
+            else {
+                if (hasZero > 0) nums[i] = 0;
+                else nums[i] = sum / nums[i];
+            }
+        }
+        return nums;
+    }
+
 //revised version, no extra space used, O(n) time complexity
 public int[] productExceptSelf(int[] nums) {
         if(nums == null || nums.length == 0) return nums;

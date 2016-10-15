@@ -1,3 +1,32 @@
+public  List<Integer> findSubstring(String s, String[] words) {
+        if (s == null || s.length() < words[0].length()) return new ArrayList<Integer>();
+        int len = words[0].length();
+        HashMap<String, Integer> dict = new HashMap<String, Integer>();
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        for(String word: words) {
+            if(dict.containsKey(word)) dict.put(word, dict.get(word) + 1);
+            else dict.put(word, 1);
+        }
+        
+        for (int i = 0; i <= s.length() - len * words.length; i++)  {
+            HashMap<String, Integer> copy = new HashMap<String, Integer>(dict);
+            if(find(s.substring(i, i + words.length * len), copy, len))  res.add(i);
+        }
+        return res;
+    }
+    
+    private  boolean find(String s, HashMap<String, Integer> dict, int len) {
+        for(int i = 0; i < s.length(); i+= len) {
+            String cur = s.substring(i, i + len);
+            if(!dict.containsKey(cur) || dict.get(cur) == 0) return false;
+            else dict.put(cur, dict.get(cur) - 1);
+        }
+        for(String key: dict.keySet()) {
+            if (dict.get(key) != 0) return false;
+        }
+        return true;
+    }
+
 //second rewrite -- failed
 public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> res = new ArrayList<Integer>();

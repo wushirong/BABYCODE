@@ -1,3 +1,22 @@
+public ListNode mergeKLists(ListNode[] lists) {
+        if(lists == null || lists.length == 0) return null;
+        PriorityQueue<ListNode> pq = new PriorityQueue<>(10, new Comparator<ListNode>(){
+            public int compare(ListNode ln1, ListNode ln2) {
+                return ln1.val - ln2.val;
+            }
+        });
+        for(ListNode ln: lists) if (ln != null) pq.offer(ln);
+        ListNode dummy = new ListNode(0);
+        ListNode walk = dummy;
+        while(!pq.isEmpty()) {
+            ListNode cur = pq.poll();
+            walk.next = cur;
+            walk = walk.next;
+            if (cur.next != null) pq.offer(cur.next);
+        }
+        return dummy.next;
+    }
+
 //another method using priority queue, o(n) time and space
 public ListNode mergeKLists(ListNode[] lists) {
         if(lists == null || lists.length == 0) return null;

@@ -1,3 +1,26 @@
+    public int minMeetingRooms(Interval[] intervals) {
+        if(intervals == null || intervals.length == 0) return 0;
+        int max = 0;
+        for (Interval i: intervals) {
+            max = Math.max(max, i.end);
+        }
+        int[] record = new int[max+1];
+        
+        for(int i = 0; i < intervals.length; i++) {
+            Interval cur = intervals[i];
+            record[cur.start]++;
+            record[cur.end]--;
+        }
+        int count = 0;
+        int res = 0;
+        for (int i = 0; i < record.length; i++) {
+            count += record[i];
+            record[i] = count;
+            res = Math.max(res, count);
+        }
+        return res;
+    }
+
 /**
  * Definition for an interval.
  * public class Interval {

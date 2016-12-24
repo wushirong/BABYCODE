@@ -2,7 +2,7 @@ public List<Interval> merge(List<Interval> intervals) {
         if (intervals == null || intervals.size() == 0) return intervals;
         Collections.sort(intervals, new Comparator<Interval>(){
             public int compare(Interval i1, Interval i2) {
-                return i1.start - i2.start;
+                return i1.start - i2.start;        // important, if use return a.start < b.start? -1:1; directly, would have illegal compare error, add a if (a.start == b.start) return 0; can solve
             }
         });
         List<Interval> res = new ArrayList<Interval>();

@@ -1,3 +1,22 @@
+public ListNode plusOne(ListNode head) {
+        if (head == null) return head;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode lastnotnine = dummy;
+        ListNode node = head;
+        while (node != null) {
+            if (node.val != 9) lastnotnine = node;
+            node = node.next;
+        }
+        lastnotnine.val++;
+        while(lastnotnine.next != null) {
+            lastnotnine = lastnotnine.next;
+            lastnotnine.val = 0;
+        }
+        return dummy.val == 1? dummy: head;
+    }
+
+    
 public class Solution {
     public ListNode plusOne(ListNode head) {
         if(head == null) return head;

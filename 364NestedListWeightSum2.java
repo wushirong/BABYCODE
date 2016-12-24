@@ -1,3 +1,27 @@
+//using prev and levelsum to help calculate depth inside sum
+public int depthSumInverse(List<NestedInteger> nestedList) {
+        if (nestedList == null || nestedList.size() == 0) return 0;
+        Queue<NestedInteger> queue = new LinkedList<>();
+        for (NestedInteger each: nestedList) queue.offer(each);
+        int prev = 0;
+        int res = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            int levelsum = 0;
+            
+            for (int i = 0; i < size; i++) {
+                NestedInteger cur = queue.poll();
+                if (cur.isInteger()) levelsum += cur.getInteger();
+                else {
+                    for(NestedInteger item: cur.getList()) queue.offer(item);
+                }
+            }
+            prev += levelsum;
+            res += prev;
+        }
+        return res;
+    }
+
 public int depthSumInverse(List<NestedInteger> nestedList) {
         if(nestedList == null || nestedList.size() == 0) return 0;
         int depth = findDepth(nestedList, 1);
